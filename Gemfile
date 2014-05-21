@@ -7,6 +7,8 @@ gem 'rails', '3.2.11'
 
 gem 'mysql2', '0.3.12'
 
+gem 'dalli'
+
 gem 'unicorn'
 gem "newrelic_rpm", "~> 3.5.7.57.beta"
 
