@@ -45,9 +45,16 @@ RubyRailsSample::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
-  config.cache_store = :dalli_store, 'mc5.dev.ec2.memcachier.com:11211',
-      { :username => 'a708c5', :password => '1470b3fffb',
-        :namespace => :ruby_rails_unicorn_sample, :expires_in => 86400, :compress => true }
+  #config.cache_store = :dalli_store, 'mc5.dev.ec2.memcachier.com:11211',
+  #    { :username => 'a708c5', :password => '1470b3fffb',
+  #      :namespace => :ruby_rails_unicorn_sample, :expires_in => 86400, :compress => true }
+  config.cache_store = :dalli_store,
+     (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+     {:username => ENV["MEMCACHIER_USERNAME"],
+      :password => ENV["MEMCACHIER_PASSWORD"],
+      :failover => true,
+      :socket_timeout => 1.5,
+      :socket_failure_delay => 0.2}
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
