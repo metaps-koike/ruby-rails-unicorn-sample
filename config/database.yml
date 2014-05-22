@@ -23,11 +23,10 @@ production:
 # database: db/production.sqlite3
 # timeout: 5000
   adapter: mysql2
-  database: heroku_eb704bbea5ae717
+  database: heroku_73941f2476a0e68
   pool: 5
   host: us-cdbr-east-05.cleardb.net
-  username: b71722824950b1
-  password: 97423eec
+  username: bd3929e9397c58
+  password: c15c6e0d
   encoding: utf8
   charset: utf8
-
